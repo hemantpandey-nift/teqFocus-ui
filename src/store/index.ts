@@ -7,9 +7,7 @@ const store = configureStore({
   reducer: { user: userReducer },
 });
 
-type RootState = ReturnType<typeof store.getState>;
-
-export const userState = (state: RootState) => state.user;
+export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
