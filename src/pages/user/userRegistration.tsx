@@ -33,7 +33,15 @@ const UserRegistrationForm = () => {
   // Initial form values
   const initialValues: UserType = useMemo(() => {
     return selectedUser
-      ? selectedUser
+      ? {
+          firstName: selectedUser.firstName,
+          middleName: selectedUser.middleName,
+          lastName: selectedUser.lastName,
+          userEmail: selectedUser.userEmail,
+          profilePicture: selectedUser.profilePicture,
+          dateOfBirth: selectedUser.dateOfBirth,
+          contactNumber: selectedUser.contactNumber,
+        }
       : {
           firstName: "",
           middleName: "",
@@ -92,7 +100,7 @@ const UserRegistrationForm = () => {
     } else {
       const userId = selectedUser.userId;
       userList = userList.map((el: any) => {
-        return el.userId === userId ? values : el;
+        return el.userId === userId ? { userId: userId, ...values } : el;
       });
     }
 
